@@ -1,8 +1,9 @@
 <div align="center"><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"></div>
 <h1 align="center">Fase 1</h1>
 <p align="center"><strong>Description</strong>
-<br>Primer proyecto</p>
-<br>Curso de Diseño de Software</p>
+<br>Primer proyecto
+<br>cd app-fase-1 
+<br> npm start app-fase-1</p>
 <br/>
 <div align="center"><img src="demo.gif"></img></div>
 <h2>About</h2>
