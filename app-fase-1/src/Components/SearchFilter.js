@@ -5,4 +5,4 @@ const SearchFilter = ( {value, onChange}) =>
     find breed: <input value={value} onChange={onChange} />
 </div>
 
-export default SearchFilter
+export default SearchFilter;
