@@ -6,7 +6,7 @@ import SearchFilter from './SearchFilter';
 import BreedList from './BreedList';
 import BreedInfo from './BreedInfo';
 import BreedDisplay from './BreedDisplay';
-
+import NavBar from './NavBar';
 
 
 const BreedSearch = () => {
@@ -70,7 +70,7 @@ const BreedSearch = () => {
 
   return(
     <div>
-      <Profile/>
+      <NavBar />
       {/* <h1>Dog Breeds!</h1> */}
       <SearchFilter value={searchFilter} onChange={handleSearchFilterChange}/>
       { showBreedImages() }
