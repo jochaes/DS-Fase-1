@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Profile from './Profile';
+import {useAuth0} from '@auth0/auth0-react'
 
 import SearchFilter from './SearchFilter';
 import BreedList from './BreedList';
@@ -10,13 +10,16 @@ import NavBar from './NavBar';
 
 
 const BreedSearch = () => {
+  const {isAuthenticated} = useAuth0()
+
+
   //StateHook for Breeds data
   const [breeds, setBreeds] = useState([]); //Empty because we want to retrieve the data from the api
   const [searchFilter, setSearchFilter] = useState(""); //Search bar for countries
 
-  //Retrieve Breed data from RestAPI
-  const getBreedsAPI = () => {
-    console.log("Sending Get request to CountriesAPI");
+
+  useEffect( () => {
+    console.log("Sending Get request to Dog-API");
     axios
       .get("https://api.thedogapi.com/v1/breeds?limit=200&page=0") //Get request to api
       .then((response) => {
@@ -25,9 +28,8 @@ const BreedSearch = () => {
         console.log(breedsResponse);
         setBreeds(breedsResponse); //countries are stored in the state
       });
-  };
+  }, [])
 
-  useEffect(getBreedsAPI, []);
 
   //Function that shows breeds
   const showBreedImages = () => {

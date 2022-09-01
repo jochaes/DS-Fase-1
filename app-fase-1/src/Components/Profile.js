@@ -17,7 +17,8 @@ const Profile = () =>{
     }else{
         return (
             <div>
-             <NavBar/>   
+             <NavBar/>
+             <h3>Para ver el Perfil debe Iniciar Sesión</h3>   
             </div>
         )
     }
