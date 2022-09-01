@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Profile from './Profile';
 
 import SearchFilter from './SearchFilter';
 import BreedList from './BreedList';
@@ -42,7 +43,7 @@ const BreedSearch = () => {
       } else {
         if (filteredNames.length === 1) {
           console.log(filteredNames[0].id);
-          return <BreedInfo breedId={filteredNames[0].id} />;
+          return <BreedInfo breedId={filteredNames[0]} />;
         } else {
           const breedArrayFinal = filteredNames.map((breed) => (
             <BreedDisplay
@@ -69,7 +70,8 @@ const BreedSearch = () => {
 
   return(
     <div>
-      <h1>Dog Breeds!</h1>
+      <Profile/>
+      {/* <h1>Dog Breeds!</h1> */}
       <SearchFilter value={searchFilter} onChange={handleSearchFilterChange}/>
       { showBreedImages() }
     </div>

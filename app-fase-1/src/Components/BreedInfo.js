@@ -12,16 +12,17 @@ const BreedInfo = ({ breedId }) => {
 
     axios
       .get(
-        `https://api.thedogapi.com/v1/images/search?x-api-key=${dog_api_key}?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=1&limit=9&breed_ids=${breedId}`
+        `https://api.thedogapi.com/v1/images/search?x-api-key=${dog_api_key}?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=1&limit=9&breed_ids=${breedId.id}`
       ) //Get request to api (query="Capital","Country")
       .then((response) => {
         console.log("Dog Response Fulfilled");
 
         var dogResponse = [response.data]; //Stores breed  in state
         dogResponse = dogResponse[0].map((image) => image);
-        setBreedInfo(dogResponse); //countries are stored in the state
+        setBreedInfo(dogResponse); //images are stored in the state
       });
   };
+
   useEffect(getBreedImages, []);
 
   const getImages = () => {
@@ -58,8 +59,11 @@ const BreedInfo = ({ breedId }) => {
 
   return (
     <div>
-      <h1>Breed</h1>
+      <h1>Informacion del {breedId.name}</h1>
+      <p>Peso: { breedId.weight.metric } kg</p>
       <ul>{getImages()}</ul>
+
+      
     </div>
 
     // <div>
