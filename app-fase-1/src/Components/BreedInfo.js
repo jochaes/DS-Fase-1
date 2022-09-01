@@ -64,6 +64,9 @@ const BreedInfo = ({ breedId }) => {
       <ul>{getImages()}</ul>
 
       
+
+
+      
     </div>
 
     // <div>
