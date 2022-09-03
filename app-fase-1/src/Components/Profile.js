@@ -9,7 +9,7 @@ const Profile = () => {
 			<div className="container">
 				<div className="row">
 					<NavBar />
-					<img scr={user.picture} alt/>
+					<img scr={user.picture}/>
 					<h2>{user.name}</h2>
 					<p>{user.email}</p>
 				</div>
