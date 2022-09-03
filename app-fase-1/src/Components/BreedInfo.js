@@ -7,8 +7,8 @@ const BreedInfo = ({ breedInfo }) => {
   const dog_api_key = process.env.REACT_APP_API_KEY
 
   //Gets the Breed Images by its Id
-  useEffect( () => {
-    console.log("Sending Get request to WeatherAPI")
+  const getBreedImages = () => {
+    console.log("Sending Get request to Dog API")
   
     axios
       .get(
@@ -21,7 +21,9 @@ const BreedInfo = ({ breedInfo }) => {
         dogResponse = dogResponse[0].map((image) => image)
         setBreedImages(dogResponse); //images are stored in the state
       })
-  })
+  }
+
+  useEffect(getBreedImages,[])
 
 
 
@@ -49,44 +51,6 @@ const BreedInfo = ({ breedInfo }) => {
       <ul>{getImages()}</ul>
       
     </div>
-
-    // <div>
-    //   <h2>{country.name.common}</h2>
-    //   <p>
-    //     Capital: {country.capital[0]}
-    //     <br></br>
-    //     cca2: {country.cca2}
-    //   </p>
-
-    //   <h3>Languages</h3>
-    //   <ul>
-    //     {Object.values(country.languages).map((lang) => (
-    //       <li key={lang}> {lang} </li>
-    //     ))}
-    //   </ul>
-
-    //   <img
-    //     src={country.flags.png}
-    //     alt={country.name.common + "flag"}
-    //     width="150"
-    //     height="100"
-    //   ></img>
-
-    //   <h3>Weather in {country.capital[0]}</h3>
-
-    //   <p>
-    //     <strong>Temperature:</strong> {getTemperature()}
-    //   </p>
-    //   <img
-    //     src={getWeatherIcon()}
-    //     alt={country.name.common + "weather icon"}
-    //     width="75px"
-    //     height="75px"
-    //   ></img>
-    //   <p>
-    //     <strong>Wind:</strong> {getWind()}
-    //   </p>
-    // </div>
   );
 };
 
