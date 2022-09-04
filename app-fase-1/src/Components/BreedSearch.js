@@ -33,11 +33,17 @@ const BreedSearch = () => {
 		}
 	}, [])
 
+	const showButton = event => {
+		console.log(event.target.name)
+		setSearchFilter(event.target.name)
+	}
+
 	//Function that shows breeds
 	const showBreedImages = () => {
 		if (searchFilter === "") {
 			return []
 		} else {
+			console.log(searchFilter);
 			const regex = new RegExp(`${searchFilter}`, "gi") //Regular expression to get the name upper or lower case
 			const filteredNames = breeds.filter(breed => breed.name.match(regex) !== null) //Filter the names with that regex
 			if (filteredNames.length > 10) {
@@ -61,10 +67,7 @@ const BreedSearch = () => {
 	//Handle when searchbox text it's modified
 	const handleSearchFilterChange = event => setSearchFilter(event.target.value)
 
-	const showButton = event => {
-		console.log(event.target.name)
-		setSearchFilter(event.target.name)
-	}
+
 
 	if (isAuthenticated) {
 		return (
