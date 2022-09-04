@@ -1,37 +1,37 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
-const BreedInfo = ({ breedId }) => {
-  const [breedInfo, setBreedInfo] = useState([]);
+const BreedInfo = ({ breedInfo }) => {
+  const [breedImages, setBreedImages] = useState([])
+  const dog_api_key = process.env.REACT_APP_API_KEY
 
-  //Gets the Breed by its Id
-  const getBreedImages = () => {
-    console.log("Sending Get request to WeatherAPI");
-    const dog_api_key = process.env.REACT_APP_API_KEY;
-
+  //Gets the Breed Images by its Id
+  useEffect( () => {
+    console.log("Sending Get request to WeatherAPI")
+  
     axios
       .get(
-        `https://api.thedogapi.com/v1/images/search?x-api-key=${dog_api_key}?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=1&limit=9&breed_ids=${breedId.id}`
+        `https://api.thedogapi.com/v1/images/search?x-api-key=${dog_api_key}?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=1&limit=9&breed_ids=${breedInfo.id}`
       ) //Get request to api (query="Capital","Country")
       .then((response) => {
-        console.log("Dog Response Fulfilled");
+        console.log("Dog Response Fulfilled")
 
         var dogResponse = [response.data]; //Stores breed  in state
-        dogResponse = dogResponse[0].map((image) => image);
-        setBreedInfo(dogResponse); //images are stored in the state
-      });
-  };
+        dogResponse = dogResponse[0].map((image) => image)
+        setBreedImages(dogResponse); //images are stored in the state
+      })
+  })
 
-  useEffect(getBreedImages, []);
+
 
   const getImages = () => {
     console.log("getImages");
 
-    if (breedInfo.length != 0) {
-      const breed_images = breedInfo.map((image) => (
+    if (breedInfo.length !== 0) {
+      const breed_images = breedImages.map((image) => (
         <li key={image.id}>
-          <img src={image.url} alt="Image of dog breed" height="50" width="50"></img>
+          <img src={image.url} alt="dog breed" height="50" width="50"></img>
         </li>
       ));
 
@@ -41,31 +41,12 @@ const BreedInfo = ({ breedId }) => {
     }
   };
 
-  // //Gets the temperature from the alreade stored weather
-  // const getTemperature = () =>
-  //   weather.length === 0 ? "NO DATA" : weather[0].current.temperature;
-
-  // //Gets Image from already stored weather
-  // const getWeatherIcon = () =>
-  //   weather.length === 0 ? "NO DATA" : weather[0].current.weather_icons[0];
-
-  // //Gets Wind speed and direction from already stored data in state
-  // const getWind = () =>
-  //   weather.length === 0
-  //     ? "NO DATA"
-  //     : weather[0].current.wind_speed.toString() +
-  //       " mph direction " +
-  //       weather[0].current.wind_dir.toString();
-
   return (
     <div>
-      <h1>Informacion del {breedId.name}</h1>
-      <p>Peso: { breedId.weight.metric } kg</p>
+
+      <h1>Informacion del {breedInfo.name}</h1>
+      <p>Peso: { breedInfo.weight.metric } kg</p>
       <ul>{getImages()}</ul>
-
-      
-
-
       
     </div>
 
