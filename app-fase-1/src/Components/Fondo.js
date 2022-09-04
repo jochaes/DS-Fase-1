@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import videoBG from './videoBGPerro.mp4';
+import styles from './FondoVideo.module.css'
+import videoBG from './videoPerros2.mp4';
 class Fondo extends Component{
 
     render(){
+        console.log(styles);
         return(
-        <video autoPlay loop muted>
+        <video className={styles.FondoVideo} autoPlay loop muted>
           <source src = {videoBG} type = "video/mp4"/>
         </video>
         );
