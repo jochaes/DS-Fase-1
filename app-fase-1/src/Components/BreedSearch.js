@@ -7,6 +7,7 @@ import BreedList from "./BreedList"
 import BreedInfo from "./BreedInfo"
 import BreedDisplay from "./BreedDisplay"
 import NavBar from "./NavBar"
+import Fondo from "./Fondo"
 
 const BreedSearch = () => {
 	const { isAuthenticated } = useAuth0()
@@ -72,6 +73,8 @@ const BreedSearch = () => {
 	if (isAuthenticated) {
 		return (
 			<div className="container">
+				<Fondo />
+
 				<div className="row">
 					<NavBar />
 					<SearchFilter value={searchFilter} onChange={handleSearchFilterChange} />
@@ -83,6 +86,8 @@ const BreedSearch = () => {
 	} else {
 		return (
 			<div className="container">
+				<Fondo />
+
 				<div className="row">
 					<NavBar />
 					<h3>Para Buscar debe haber iniciado sesión.</h3>

@@ -1,6 +1,7 @@
 import React from "react"
 import { useAuth0 } from "@auth0/auth0-react"
 import NavBar from "./NavBar"
+import Fondo from "./Fondo"
 
 const Profile = () => {
 	const { user, isAuthenticated } = useAuth0()
@@ -9,6 +10,7 @@ const Profile = () => {
 	if (isAuthenticated) {
 		return (
 			<div className="container">
+				<Fondo />
 				<div className="row">
 					<NavBar />
 					<img scr={user && user.picture} alt={user.nickname} width={'100'} />
@@ -20,6 +22,8 @@ const Profile = () => {
 	} else {
 		return (
 			<div className="container">
+				<Fondo />
+
 				<div className="row">
 					<NavBar />
 					<h3>Para ver el Perfil debe Iniciar Sesión</h3>
