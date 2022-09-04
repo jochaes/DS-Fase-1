@@ -10,29 +10,34 @@ import NavBar from "./NavBar"
 import Fondo from "./Fondo"
 
 const BreedSearch = () => {
-	const { isAuthenticated } = useAuth0()
-  
+	const { isAuthenticated, isLoading } = useAuth0()
+
 	//StateHook for Breeds data
 	const [breeds, setBreeds] = useState([]) //Empty because we want to retrieve the data from the api
 	const [searchFilter, setSearchFilter] = useState("") //Search bar for countries
 
-	useEffect(() => {
-		if (isAuthenticated){
 
-		console.log("Sending Get request to Dog-API")
-		axios
-			.get("https://api.thedogapi.com/v1/breeds?limit=200&page=0") //Get request to api
-			.then(response => {
-				console.log("Response Fulfilled")
-				const breedsResponse = response.data
-				console.log(breedsResponse)
-				setBreeds(breedsResponse) //countries are stored in the state
-			})
-		} else{
+
+	const loadBreedsInfo = () => {
+
+		if(isAuthenticated) {
+			console.log("Sending Get request to Dog-API")
+			axios
+				.get("https://api.thedogapi.com/v1/breeds?limit=200&page=0") //Get request to api
+				.then(response => {
+					console.log("Response Fulfilled")
+					const breedsResponse = response.data
+					console.log(breedsResponse)
+					setBreeds(breedsResponse) //countries are stored in the state
+				})
+		} else {
 			setBreeds([])
 			console.log("User must be logged in to send the request to Dog-API")
 		}
-	}, [])
+	}
+	
+	useEffect(loadBreedsInfo,[])
+
 
 	const showButton = event => {
 		console.log(event.target.name)
@@ -44,7 +49,7 @@ const BreedSearch = () => {
 		if (searchFilter === "") {
 			return []
 		} else {
-			console.log(searchFilter);
+			console.log(searchFilter)
 			const regex = new RegExp(`${searchFilter}`, "gi") //Regular expression to get the name upper or lower case
 			const filteredNames = breeds.filter(breed => breed.name.match(regex) !== null) //Filter the names with that regex
 			if (filteredNames.length > 10) {
@@ -63,40 +68,39 @@ const BreedSearch = () => {
 		}
 	}
 
-
 	//Handlers
 	//Handle when searchbox text it's modified
 	const handleSearchFilterChange = event => setSearchFilter(event.target.value)
 
-
-
 	if (isAuthenticated) {
 		return (
-			<div className="container">
-				<Fondo />
+			<div>
+				<NavBar />
+				<div className="container fondo_contenedor">
+					<Fondo />
 
-				<div className="row">
-					<NavBar />
-					<SearchFilter value={searchFilter} onChange={handleSearchFilterChange} />
-					{showBreedImages()}
+					<div className="row">
+						<SearchFilter value={searchFilter} onChange={handleSearchFilterChange} />
+						{showBreedImages()}
+					</div>
 				</div>
 			</div>
 		)
-		
 	} else {
 		return (
-			<div className="container">
-				<Fondo />
+			<div>
+				<NavBar />
 
-				<div className="row">
-					<NavBar />
-					<h3>Para Buscar debe haber iniciado sesión.</h3>
+				<div className="container fondo_contenedor">
+					<Fondo />
+
+					<div className="row">
+						<h3>Para Buscar debe haber iniciado sesión.</h3>
+					</div>
 				</div>
 			</div>
 		)
-		
 	}
-
 }
 
 export default BreedSearch

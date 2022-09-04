@@ -6,27 +6,31 @@ import Fondo from "./Fondo"
 const Profile = () => {
 	const { user, isAuthenticated } = useAuth0()
 
-	console.log(user);
+	console.log(user)
 	if (isAuthenticated) {
 		return (
-			<div className="container">
-				<Fondo />
-				<div className="row">
-					<NavBar />
-					<img scr={user && user.picture} alt={user.nickname} width={'100'} />
-					<h2>{user.name}</h2>
-					<p>{user.email}</p>
+			<div>
+				<NavBar />
+				<div className="container fondo_contenedor">
+					<Fondo />
+					<div className="row">
+						<img scr="http://lh3.googleusercontent.com/a-/AFdZucqZx9s9i1hMbJ4paPlt97sD94C-iAi8LdV5FBOm=s96-c" alt={user.nickname} width={"100"} />
+						<h2>{user.name}</h2>
+						<p>{user.email}</p>
+					</div>
 				</div>
 			</div>
 		)
 	} else {
 		return (
-			<div className="container">
-				<Fondo />
+			<div>
+				<NavBar />
 
-				<div className="row">
-					<NavBar />
-					<h3>Para ver el Perfil debe Iniciar Sesión</h3>
+				<div className="container fondo_contenedor">
+					<Fondo />
+					<div className="row">
+						<h3>Para ver el Perfil debe Iniciar Sesión</h3>
+					</div>
 				</div>
 			</div>
 		)

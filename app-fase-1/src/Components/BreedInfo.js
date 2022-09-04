@@ -32,7 +32,7 @@ const BreedInfo = ({ breedInfo }) => {
 		if (breedInfo.length !== 0) {
 			const breed_images = breedImages.map((image, index) => (
 				<div key={image.id} className={index == 0 ? "carousel-item active" : "carousel-item"}>
-					<img src={image.url} alt="dog breed" className="d-block w-100" />
+					<img src={image.url} alt="dog breed" className="d-block rounded" />
 				</div>
 			))
 
@@ -77,29 +77,29 @@ const BreedInfo = ({ breedInfo }) => {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col">
-					<h1>{breedInfo.name}</h1>{" "}
+				<div className="col titulo">
+					<span >{breedInfo.name}</span>
 				</div>
 				<div className="col">
-					<img src={breedInfo.image.url} className="img-fluid" />{" "}
+					<img src={breedInfo.image.url} className="img-fluid rounded" />{" "}
 				</div>
 			</div>
 
 			<div className="row">
-				<div className="col">
-					<h3> Peso </h3>
+				<div className="col info_card">
+					<h3 className="subtitulo"> Peso </h3>
 					<p> Este tipo de razas tienen un peso de entre {breedInfo.weight.metric} kilogramos.</p>
 				</div>
-				<div className="col">
-					<h3>Altura</h3>
+				<div className="col info_card">
+					<h3 className="subtitulo">Altura</h3>
 					<p>Además pueden alcanzar una altura de {breedInfo.height.metric} centímetros</p>
 				</div>
 			</div>
 
-			<div className="row text-center">
+			<div className="row text-center info_card">
 
-				<div className="row">
-					<h3>Crianza</h3>
+				<div className="row ">
+					<h3 className="subtitulo">Crianza</h3>
 				</div>
 
 				<div className="row row-cols-1 row-cols-md-3 g-4">
@@ -108,22 +108,22 @@ const BreedInfo = ({ breedInfo }) => {
 			</div>
 
       <div className="row">
-        <div className="col">
-          <h3>Grupo de Raza</h3>
+        <div className="col info_card">
+          <h3 className="subtitulo">Grupo de Raza</h3>
           <p>{breedInfo.breed_group}</p>
         </div>
 
-        <div className="col">
-          <h3>Esperanza de Vida</h3>
+        <div className="col info_card">
+          <h3 className="subtitulo">Esperanza de Vida</h3>
           <p>Logran tener una esperanza de vida de entre {breedInfo.life_span}</p>
         </div>
 
       </div>
 
-      <div className="row text-center">
+      <div className="row text-center info_card">
 
         <div className="row">
-          <h3>Temperamento</h3>
+          <h3 className="subtitulo">Temperamento</h3>
         </div>
 
         <div className="row row-cols-1 row-cols-md-3 g-4">
@@ -132,9 +132,9 @@ const BreedInfo = ({ breedInfo }) => {
       </div>
 
 
-      <div className="row text-center">
+      <div className="row text-center info_card">
       <div className="row">
-        <h3>Origen</h3>
+        <h3 className="subtitulo">Origen</h3>
       </div>
 
       <div className="row row-cols-1 row-cols-md-3 g-4">
