@@ -1,12 +1,20 @@
 import React from "react"
 import { useEffect, useState } from "react"
 import axios from "axios"
-
+/**
+ * @param breedInfo json con la informacion de la raza 
+ * 
+ * Componenete que se encarga de mostrar la información de la raza, osea la información que
+ * se incluye en el API 
+ */
 const BreedInfo = ({ breedInfo }) => {
 	const [breedImages, setBreedImages] = useState([])
 	const dog_api_key = process.env.REACT_APP_API_KEY
 
-	//Gets the Breed Images by its Id
+	
+	/**
+	 * Obtiene la lista de imagenes que se asocian al id de la raza 
+	 */
 	const getBreedImages = () => {
 		console.log("Sending Get request to Dog API")
 
@@ -24,8 +32,11 @@ const BreedInfo = ({ breedInfo }) => {
 			})
 	}
 
-	useEffect(getBreedImages, [])
+	useEffect(getBreedImages, [])     //Se llama cuando se crea el componente ya que se obtiene la info del api 
 
+	/**
+	 * Retorna la lista de compoenetes de imagenes para el carousel 
+	 */
 	const getImages = () => {
 		console.log("getImages")
 
@@ -41,7 +52,13 @@ const BreedInfo = ({ breedInfo }) => {
 			return "NO IMAGE DATA"
 		}
 	}
-
+	/**
+	 * @param string Texto en donde vienen diferentes acaracteristicas separadas por ,
+	 * @param card_codo Codigo de la card a crea, ya que react necesita un key para cada compoennete interno 
+	 * @param card_type Clase que se puede añadir a la tarketa para darle un aspecto diferete
+	 * 
+	 * Se encarga de crear las tarejtas de diferentes tipos de información que envía el API 
+	 */
   const getCards = (string, card_code, card_type) => {
     console.log("Building cards for "  + card_code);
 

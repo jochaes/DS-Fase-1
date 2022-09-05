@@ -6,6 +6,9 @@ import {useAuth0} from '@auth0/auth0-react'
 
 import {Link } from "react-router-dom";
 
+/** 
+ * Barra de navegacion que aparece en la parte superior de la pantalla 
+ */
 const NavBar = () => {
     const {isAuthenticated} = useAuth0()
 
@@ -27,6 +30,7 @@ const NavBar = () => {
                 </li>
 
             </ul>
+            {/*Si no está autenticado, carga el bóton de iniciar sesion */}
                 {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
             </div>
         </div>

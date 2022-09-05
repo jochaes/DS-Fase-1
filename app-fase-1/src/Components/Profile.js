@@ -3,6 +3,9 @@ import { useAuth0 } from "@auth0/auth0-react"
 import NavBar from "./NavBar"
 import Fondo from "./Fondo"
 
+/**
+ * Componenete que se encarga de mostrar alguna informacion del perfil del usuario 
+ */
 const Profile = () => {
 	const { user, isAuthenticated } = useAuth0()
 

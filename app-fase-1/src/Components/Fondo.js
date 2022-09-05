@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import styles from './FondoVideo.module.css'
 import videoBG from './videoPerros2.mp4';
+
+/**
+ * Renderiza el video de fondo.
+ */
 class Fondo extends Component{
 
     render(){

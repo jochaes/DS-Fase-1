@@ -1,12 +1,9 @@
 import React from "react"
-
+/**
+ * @param breed Json con la informacion de la raza 
+ * @param onClickhandler 
+ */
 const BreedDisplay = ({ breed, onClickhandler }) => {
-	// return <li>
-	//             <p>Breed:{breed.name}</p>
-	//             <p>ID:   {breed.id}</p>
-	//             <img src={breed.image.url} alt={breed.name} width="50" height="50"></img>
-	//             <button onClick={onClickhandler} name={breed.name}>show</button>
-	//         </li>
 
 	return (
 		<div className="col">
